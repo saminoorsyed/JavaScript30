@@ -18,29 +18,62 @@
     }
 
     // Regular
-
+    console.log('hello');
     // Interpolated
+    console.log('this is how you interpolate an %s and then put more after it.', 'extra string from a second arg');
+    const msg = 'extra string from a variable '
+    console.log(`this is how you interpolate an ${msg} and then put more after it.`); // make sure to use back ticks instead of quotes (ES6)
 
     // Styled
 
+    console.log('%c I am some styled text', 'font-size:15px; text-shadow:5px 5px 0 blue;');
     // warning!
+    console.warn('warning will robinson')
 
     // Error :|
-
+    console.error('Whoops!')
+    
     // Info
-
+    console.info('The easter bunny steals all of his eggs from chickens because he cannot lay his own eggs... duh only girl bunnies can lay eggs')
+    
     // Testing
-
+    console.assert(1===1, 'that is wrong')
+    console.assert(1===2, 'that is wrong') // console.assert only fires if something is wrong
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'you did not select the right element') // here's an example
+    
     // clearing
+    console.clear(); //do not put at the bottom of javascript file
 
     // Viewing DOM Elements
-
+    console.log(p); // logs the actual paragraph 
+    console.dir(p); // gives a list of all the properties and methods (in the prototype)
+    console.clear()
     // Grouping together
+    dogs.forEach(dog =>{
+      console.group(`${dog.name}`)
+      console.log(`this is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age *7} dog years old`);
+      console.groupEnd(`${dog.name}`)
+    }); // group gives a dropdown to the ES6 tag and keeps everything with the same variable together could also use group collapsed
 
     // counting
-
+    console.count('Sami');
+    console.count('Sami');
+    console.count('Sami');
+    console.count('Sami');
+    console.count('Sami');
+    console.count('Sami');
     // timing
-
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data=>data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+    // table
+    console.table(dogs);
   </script>
 </body>
 </html>
