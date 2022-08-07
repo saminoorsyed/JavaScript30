@@ -5,6 +5,7 @@ const skipButts = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 const progressBar = player.querySelector('.progress__filled');
 const progress = player.querySelector('.progress');
+
 let rangeDrag = false;
 let progressDrag = false;
 
