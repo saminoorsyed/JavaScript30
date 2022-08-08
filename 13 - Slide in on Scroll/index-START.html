@@ -58,6 +58,31 @@
       };
     }
 
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      sliderImages.forEach(sliderImage => {
+        // the bottom of the window - half the height of the image
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height/2;
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        // once slideInAt pixels > top of the image, the image is half shown. larger numbers mean farther down
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        // as long as the pixel of the top of the screen is less than the bottom of the image, the image is not scrolled past
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        // console.log(slideInAt);
+        // console.log(imageBottom);
+        // console.log(isHalfShown);
+        // console.log(isNotScrolledPast);
+        if(isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        }else{
+          sliderImage.classList.remove('active');
+        }
+      
+      });
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide,10));
   </script>
 
   <style>
