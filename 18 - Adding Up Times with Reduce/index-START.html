@@ -182,6 +182,21 @@
     </li>
   </ul>
 <script>
+  const times = [...document.querySelectorAll('[data-time]')];
+
+  const seconds = times
+    .map(element => element.dataset.time)
+    .map(digitalTime =>{
+      const [min, sec] = digitalTime.split(':').map(parseFloat)
+      return (min*60)+sec;
+    })
+    .reduce((total, videoSecs) => total+videoSecs);
+    const hours = Math.floor(seconds/3600);
+    let secondsLeft = seconds % 3600;
+    const mins = Math.floor(secondsLeft/60);
+    secondsLeft = secondsLeft % 60;
+
+    console.log(hours, mins, secondsLeft)
 </script>
 </body>
 </html>
