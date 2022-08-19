@@ -42,7 +42,22 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+  function logText(e) {
+    console.log(this.classList.value);
+    // after first event trigger, bubbling stops and no more events are triggered
+    // e.stopPropagation();
+  }
+  divs.forEach(div => div.addEventListener('click', logText, {capture: false, once: true }));
 
+  // the once property makes it so that an element can only be listened to once: "unbinds the event listener from the element". this can be very helpful for buy buttons on ecommerce so that multiple items are not added to cart
+
+  button.addEventListener('click', () => {
+    console.log('click!!');
+  },{
+    once: true
+  });
 </script>
 </body>
 </html>
